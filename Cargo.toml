@@ -1,0 +1,12 @@
+[package]
+name = "dirs"
+version = "0.1.0"
+authors = ["Simon Ochsenreither <simon@ochsenreither.de>"]
+readme      = "README.md"
+license     = "MPL-2.0"
+repository  = "https://github.com/soc/dirs-rs"
+maintenance = { status = "actively-developed" }
+keywords    = ["xdg", "basedir", "app_dirs", "path", "folder"]
+
+[dependencies]
+winapi = { version = "0.3", features = ["knownfolders", "objbase", "shlobj"] }
