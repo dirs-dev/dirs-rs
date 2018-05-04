@@ -1,5 +1,5 @@
-[![crates.io](https://img.shields.io/crates/v/dirs.svg)](https://crates.io/crates/directories)
-[![API documentation](https://docs.rs/dirs/badge.svg)](https://docs.rs/directories/)
+[![crates.io](https://img.shields.io/crates/v/dirs.svg)](https://crates.io/crates/dirs)
+[![API documentation](https://docs.rs/dirs/badge.svg)](https://docs.rs/dirs/)
 ![actively developed](https://img.shields.io/badge/maintenance-actively--developed-brightgreen.svg)
 [![TravisCI status](https://img.shields.io/travis/soc/dirs-rs/master.svg?label=Linux/macOS%20build)](https://travis-ci.org/soc/dirs-rs)
 [![AppVeyor status](https://img.shields.io/appveyor/ci/soc/dirs-rs/master.svg?label=Windows%20build)](https://ci.appveyor.com/project/soc/dirs-rs/branch/master)
@@ -9,7 +9,7 @@
 
 ## Introduction
 
-- a tiny library with a minimal API
+- a tiny low-level library with a minimal API
 - that provides the platform-specific, user-accessible locations
 - for retrieving and storing configuration, cache and other data
 - on Linux, Windows (≥ Vista) and macOS.
@@ -25,7 +25,7 @@ The library provides the location of these directories by leveraging the mechani
 
 This library is written in Rust, and supports Linux, macOS and Windows.
 
-It's slightly less low-level sister library, _directories_, is available for Rust ([directories-rs](https://github.com/soc/directories-rs))
+It's mid-level sister library, _directories_, is available for Rust ([directories-rs](https://github.com/soc/directories-rs))
 and on the JVM ([directories-jvm](https://github.com/soc/directories-jvm)).
 
 ## Usage
@@ -141,9 +141,9 @@ Please take this table with a grain of salt: a different crate might very well b
 - Lin: Linux support
 - Mac: macOS support
 - Win: Windows support
-- Base: Supports [generic base directories](#basedirs)
-- User: Supports [user directories](#userdirs)
-- Proj: Supports [project-specific base directories](#projectdirs)
+- Base: Supports [generic base directories](https://github.com/soc/directories-rs#basedirs)
+- User: Supports [user directories](https://github.com/soc/directories-rs#userdirs)
+- Proj: Supports [project-specific base directories](https://github.com/soc/directories-rs#projectdirs)
 - Conv: Follows naming conventions of the operating system it runs on
 
 ## Versioning
