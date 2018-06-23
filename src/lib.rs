@@ -37,7 +37,6 @@ use std::path::PathBuf;
 /// - Use `$HOME` if it is set.
 /// - If `$HOME` is not set, the function `getpwuid_r` is used to determine
 ///   the home directory of the current user.
-/// - If this also fails, creation of `BaseDirs` panics.
 /// 
 /// On Windows, this function retrieves the user profile folder using
 /// `SHGetKnownFolderPath`.
@@ -45,7 +44,7 @@ use std::path::PathBuf;
 /// All the examples on this page mentioning `$HOME` use this behavior.
 ///
 /// [`std::env::home_dir`]: https://doc.rust-lang.org/std/env/fn.home_dir.html
-pub fn home_dir() -> PathBuf {
+pub fn home_dir() -> Option<PathBuf> {
     sys::home_dir()
 }
 /// Returns the path to the user's cache directory.
@@ -55,7 +54,7 @@ pub fn home_dir() -> PathBuf {
 /// | Linux   | `$XDG_CACHE_HOME` or `$HOME/.cache` | /home/alice/.cache           |
 /// | macOS   | `$HOME/Library/Caches`              | /Users/Alice/Library/Caches  |
 /// | Windows | `{FOLDERID_LocalAppData}`           | C:\Users\Alice\AppData\Local |
-pub fn cache_dir() -> PathBuf {
+pub fn cache_dir() -> Option<PathBuf> {
     sys::cache_dir()
 }
 /// Returns the path to the user's config directory.
@@ -65,7 +64,7 @@ pub fn cache_dir() -> PathBuf {
 /// | Linux   | `$XDG_CONFIG_HOME` or `$HOME/.config` | /home/alice/.config              |
 /// | macOS   | `$HOME/Library/Preferences`           | /Users/Alice/Library/Preferences |
 /// | Windows | `{FOLDERID_RoamingAppData}`           | C:\Users\Alice\AppData\Roaming   |
-pub fn config_dir() -> PathBuf {
+pub fn config_dir() -> Option<PathBuf> {
     sys::config_dir()
 }
 /// Returns the path to the user's data directory.
@@ -75,7 +74,7 @@ pub fn config_dir() -> PathBuf {
 /// | Linux   | `$XDG_DATA_HOME` or `$HOME/.local/share` | /home/alice/.local/share                 |
 /// | macOS   | `$HOME/Library/Application Support`      | /Users/Alice/Library/Application Support |
 /// | Windows | `{FOLDERID_RoamingAppData}`              | C:\Users\Alice\AppData\Roaming           |
-pub fn data_dir() -> PathBuf {
+pub fn data_dir() -> Option<PathBuf> {
     sys::data_dir()
 }
 /// Returns the path to the user's local data directory.
@@ -85,7 +84,7 @@ pub fn data_dir() -> PathBuf {
 /// | Linux   | `$XDG_DATA_HOME` or `$HOME/.local/share` | /home/alice/.local/share                 |
 /// | macOS   | `$HOME/Library/Application Support`      | /Users/Alice/Library/Application Support |
 /// | Windows | `{FOLDERID_LocalAppData}`                | C:\Users\Alice\AppData\Local             |
-pub fn data_local_dir() -> PathBuf {
+pub fn data_local_dir() -> Option<PathBuf> {
     sys::data_local_dir()
 }
 /// Returns the path to the user's executable directory.
