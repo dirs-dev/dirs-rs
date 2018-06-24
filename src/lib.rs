@@ -27,6 +27,8 @@ use std::path::PathBuf;
 
 /// Returns the path to the user's home directory.
 ///
+/// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None.
+///
 /// |Platform | Value                | Example        |
 /// | ------- | -------------------- | -------------- |
 /// | Linux   | `$HOME`              | /home/alice    |
@@ -55,6 +57,8 @@ pub fn home_dir() -> Option<PathBuf> {
     sys::home_dir()
 }
 /// Returns the path to the user's cache directory.
+/// 
+/// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None.
 ///
 /// |Platform | Value                               | Example                      |
 /// | ------- | ----------------------------------- | ---------------------------- |
@@ -66,6 +70,8 @@ pub fn cache_dir() -> Option<PathBuf> {
 }
 /// Returns the path to the user's config directory.
 ///
+/// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None.
+///
 /// |Platform | Value                                 | Example                          |
 /// | ------- | ------------------------------------- | -------------------------------- |
 /// | Linux   | `$XDG_CONFIG_HOME` or `$HOME/.config` | /home/alice/.config              |
@@ -75,6 +81,8 @@ pub fn config_dir() -> Option<PathBuf> {
     sys::config_dir()
 }
 /// Returns the path to the user's data directory.
+///
+/// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None.
 ///
 /// |Platform | Value                                    | Example                                  |
 /// | ------- | ---------------------------------------- | ---------------------------------------- |
@@ -86,6 +94,8 @@ pub fn data_dir() -> Option<PathBuf> {
 }
 /// Returns the path to the user's local data directory.
 ///
+/// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None.
+///
 /// |Platform | Value                                    | Example                                  |
 /// | ------- | ---------------------------------------- | ---------------------------------------- |
 /// | Linux   | `$XDG_DATA_HOME` or `$HOME/.local/share` | /home/alice/.local/share                 |
@@ -96,6 +106,8 @@ pub fn data_local_dir() -> Option<PathBuf> {
 }
 /// Returns the path to the user's executable directory.
 ///
+/// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None.
+///
 /// |Platform | Value                                                            | Example                |
 /// | ------- | ---------------------------------------------------------------- | ---------------------- |
 /// | Linux   | `$XDG_BIN_HOME` or `$XDG_DATA_HOME/../bin` or `$HOME/.local/bin` | /home/alice/.local/bin |
@@ -105,6 +117,8 @@ pub fn executable_dir() -> Option<PathBuf> {
     sys::executable_dir()
 }
 /// Returns the path to the user's runtime directory.
+///
+/// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None.
 ///
 /// |Platform | Value              | Example         |
 /// | ------- | ------------------ | --------------- |
@@ -117,6 +131,8 @@ pub fn runtime_dir() -> Option<PathBuf> {
 
 /// Returns the path to the user's audio directory.
 ///
+/// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None.
+///
 /// |Platform | Value              | Example              |
 /// | ------- | ------------------ | -------------------- |
 /// | Linux   | `XDG_MUSIC_DIR`    | /home/alice/Music    |
@@ -126,6 +142,8 @@ pub fn audio_dir() -> Option<PathBuf> {
     sys::audio_dir()
 }
 /// Returns the path to the user's desktop directory.
+///
+/// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None.
 ///
 /// |Platform | Value                | Example                |
 /// | ------- | -------------------- | ---------------------- |
@@ -137,6 +155,8 @@ pub fn desktop_dir() -> Option<PathBuf> {
 }
 /// Returns the path to the user's document directory.
 ///
+/// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None.
+///
 /// |Platform | Value                  | Example                  |
 /// | ------- | ---------------------- | ------------------------ |
 /// | Linux   | `XDG_DOCUMENTS_DIR`    | /home/alice/Documents    |
@@ -146,6 +166,8 @@ pub fn document_dir() -> Option<PathBuf> {
     sys::document_dir()
 }
 /// Returns the path to the user's download directory.
+///
+/// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None.
 ///
 /// |Platform | Value                  | Example                  |
 /// | ------- | ---------------------- | ------------------------ |
@@ -157,6 +179,8 @@ pub fn download_dir() -> Option<PathBuf> {
 }
 /// Returns the path to the user's font directory.
 ///
+/// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None.
+///
 /// |Platform | Value                                                | Example                        |
 /// | ------- | ---------------------------------------------------- | ------------------------------ |
 /// | Linux   | `$XDG_DATA_HOME/fonts` or `$HOME/.local/share/fonts` | /home/alice/.local/share/fonts |
@@ -166,6 +190,8 @@ pub fn font_dir() -> Option<PathBuf> {
     sys::font_dir()
 }
 /// Returns the path to the user's picture directory.
+///
+/// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None.
 ///
 /// |Platform | Value                 | Example                 |
 /// | ------- | --------------------- | ----------------------- |
@@ -177,6 +203,8 @@ pub fn picture_dir() -> Option<PathBuf> {
 }
 /// Returns the path to the user's public directory.
 ///
+/// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None.
+///
 /// |Platform | Value                 | Example             |
 /// | ------- | --------------------- | ------------------- |
 /// | Linux   | `XDG_PUBLICSHARE_DIR` | /home/alice/Public  |
@@ -187,6 +215,8 @@ pub fn public_dir() -> Option<PathBuf> {
 }
 /// Returns the path to the user's template directory.
 ///
+/// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None.
+///
 /// |Platform | Value                  | Example                                                    |
 /// | ------- | ---------------------- | ---------------------------------------------------------- |
 /// | Linux   | `XDG_TEMPLATES_DIR`    | /home/alice/Templates                                      |
@@ -195,19 +225,10 @@ pub fn public_dir() -> Option<PathBuf> {
 pub fn template_dir() -> Option<PathBuf> {
     sys::template_dir()
 }
-    /*
-/// Returns the path to the user's trash directory.
-///
-/// |Platform | Value                                                | Example                        |
-/// | ------- | ---------------------------------------------------- | ------------------------------ |
-/// | Linux   | `$XDG_DATA_HOME/Trash` or `$HOME/.local/share/Trash` | /home/alice/.local/share/Trash |
-/// | macOS   | `$HOME/.trash`                                       | /Users/Alice/.trash            |
-/// | Windows | `{FOLDERID_RecycleBinFolder}`                        | C:\Users\Alice\???             |
-pub fn trash_dir() -> &PathBuf {
-    sys::trash_dir.as_path()
-}
-    */
+
 /// Returns the path to the user's video directory.
+///
+/// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None.
 ///
 /// |Platform | Value               | Example               |
 /// | ------- | ------------------- | --------------------- |

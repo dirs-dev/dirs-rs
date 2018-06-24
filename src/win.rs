@@ -25,8 +25,6 @@ pub fn font_dir()       -> Option<PathBuf> { None }
 pub fn picture_dir()    -> Option<PathBuf> { unsafe { known_folder(&knownfolders::FOLDERID_Pictures) } }
 pub fn public_dir()     -> Option<PathBuf> { unsafe { known_folder(&knownfolders::FOLDERID_Public) } }
 pub fn template_dir()   -> Option<PathBuf> { unsafe { known_folder(&knownfolders::FOLDERID_Templates) } }
-    // see https://github.com/soc/directories-rs/issues/18
-    // let trash_dir      = unsafe { known_folder(&knownfolders::FOLDERID_RecycleBinFolder) };
 pub fn video_dir()      -> Option<PathBuf> { unsafe { known_folder(&knownfolders::FOLDERID_Videos) } }
 
 unsafe fn known_folder(folder_id: shtypes::REFKNOWNFOLDERID) -> Option<PathBuf> {
