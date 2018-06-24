@@ -9,6 +9,7 @@ use self::winapi::um::knownfolders;
 use self::winapi::um::combaseapi;
 use self::winapi::um::shlobj;
 use self::winapi::um::shtypes;
+use self::winapi::um::winbase;
 use self::winapi::um::winnt;
 
 pub fn home_dir()       -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_Profile) }
