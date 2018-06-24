@@ -12,7 +12,7 @@ extern crate libc;
 
 // https://github.com/rust-lang/rust/blob/master/src/libstd/sys/unix/os.rs#L498
 pub fn home_dir() -> Option<PathBuf> {
-    return env::var_os("HOME").filter(|h| !h.is_empty()).or_else(|| unsafe {
+    return env::var_os("HOME").and_then(|h| { if h.is_empty() { None } else { Some(h) } } ).or_else(|| unsafe {
         fallback()
     }).map(PathBuf::from);
 
@@ -46,3 +46,4 @@ pub fn home_dir() -> Option<PathBuf> {
         }
     }
 }
+
