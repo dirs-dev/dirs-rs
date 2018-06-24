@@ -19,6 +19,7 @@ use std::path::PathBuf;
 #[cfg(target_os = "linux")]   mod lin;
 #[cfg(target_os = "windows")] mod win;
 #[cfg(target_os = "macos")]   mod mac;
+#[cfg(unix)]                  mod unix;
 
 #[cfg(target_os = "linux")]   use lin as sys;
 #[cfg(target_os = "windows")] use win as sys;

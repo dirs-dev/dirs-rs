@@ -5,7 +5,9 @@ use std::ffi::OsString;
 use std::path::PathBuf;
 use std::process::Command;
 
-pub fn home_dir()       -> Option<PathBuf> { env::home_dir() }
+use unix;
+
+pub fn home_dir()       -> Option<PathBuf> { unix::home_dir() }
 pub fn cache_dir()      -> Option<PathBuf> { env::var_os("XDG_CACHE_HOME") .and_then(is_absolute_path).or_else(|| home_dir().map(|h| h.join(".cache"))) }
 pub fn config_dir()     -> Option<PathBuf> { env::var_os("XDG_CONFIG_HOME").and_then(is_absolute_path).or_else(|| home_dir().map(|h| h.join(".config"))) }
 pub fn data_dir()       -> Option<PathBuf> { env::var_os("XDG_DATA_HOME")  .and_then(is_absolute_path).or_else(|| home_dir().map(|h| h.join(".local/share"))) }
