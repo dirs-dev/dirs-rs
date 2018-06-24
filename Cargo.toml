@@ -8,5 +8,8 @@ repository  = "https://github.com/soc/dirs-rs"
 maintenance = { status = "actively-developed" }
 keywords    = ["xdg", "basedir", "app_dirs", "path", "folder"]
 
-[dependencies]
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
+[target.'cfg(windows)'.dependencies]
 winapi = { version = "0.3", features = ["knownfolders", "objbase", "shlobj"] }

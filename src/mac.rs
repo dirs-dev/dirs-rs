@@ -1,9 +1,10 @@
 #![cfg(target_os = "macos")]
 
-use std::env;
 use std::path::PathBuf;
 
-pub fn home_dir()       -> Option<PathBuf> { env::home_dir() }
+use unix;
+
+pub fn home_dir()       -> Option<PathBuf> { unix::home_dir() }
 pub fn cache_dir()      -> Option<PathBuf> { home_dir().map(|h| h.join("Library/Caches")) }
 pub fn config_dir()     -> Option<PathBuf> { home_dir().map(|h| h.join("Library/Preferences")) }
 pub fn data_dir()       -> Option<PathBuf> { home_dir().map(|h| h.join("Library/Application Support")) }
