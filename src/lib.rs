@@ -16,14 +16,14 @@
 
 use std::path::PathBuf;
 
-#[cfg(target_os = "linux")]   mod lin;
-#[cfg(target_os = "windows")] mod win;
-#[cfg(target_os = "macos")]   mod mac;
-#[cfg(unix)]                  mod unix;
+#[cfg(target_os = "windows")]                                mod win;
+#[cfg(target_os = "macos")]                                  mod mac;
+#[cfg(not(any(target_os = "windows", target_os = "macos")))] mod lin;
+#[cfg(unix)]                                                 mod unix;
 
-#[cfg(target_os = "linux")]   use lin as sys;
-#[cfg(target_os = "windows")] use win as sys;
-#[cfg(target_os = "macos")]   use mac as sys;
+#[cfg(target_os = "windows")]                                use win as sys;
+#[cfg(target_os = "macos")]                                  use mac as sys;
+#[cfg(not(any(target_os = "windows", target_os = "macos")))] use lin as sys;
 
 /// Returns the path to the user's home directory.
 ///
@@ -244,6 +244,21 @@ pub fn video_dir() -> Option<PathBuf> {
 mod tests {
     #[test]
     fn test_dirs() {
-        println!("BaseDirs::new())\n{:?}", "todo");
+        println!("home_dir:       {:?}", ::home_dir());
+        println!("cache_dir:      {:?}", ::cache_dir());
+        println!("config_dir:     {:?}", ::config_dir());
+        println!("data_dir:       {:?}", ::data_dir());
+        println!("data_local_dir: {:?}", ::data_local_dir());
+        println!("executable_dir: {:?}", ::executable_dir());
+        println!("runtime_dir:    {:?}", ::runtime_dir());
+        println!("audio_dir:      {:?}", ::audio_dir());
+        println!("home_dir:       {:?}", ::desktop_dir());
+        println!("cache_dir:      {:?}", ::document_dir());
+        println!("config_dir:     {:?}", ::download_dir());
+        println!("font_dir:       {:?}", ::font_dir());
+        println!("picture_dir:    {:?}", ::picture_dir());
+        println!("public_dir:     {:?}", ::public_dir());
+        println!("template_dir:   {:?}", ::template_dir());
+        println!("video_dir:      {:?}", ::video_dir());
     }
 }
