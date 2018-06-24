@@ -19,5 +19,4 @@ pub fn font_dir()       -> Option<PathBuf> { home_dir().map(|h| h.join("Library/
 pub fn picture_dir()    -> Option<PathBuf> { home_dir().map(|h| h.join("Pictures")) }
 pub fn public_dir()     -> Option<PathBuf> { home_dir().map(|h| h.join("Public")) }
 pub fn template_dir()   -> Option<PathBuf> { None }
-// pub fn trash_dir() -> Option<PathBuf> { Some(home_dir().join(".trash")) }
 pub fn video_dir()      -> Option<PathBuf> { home_dir().map(|h| h.join("Movies")) }
