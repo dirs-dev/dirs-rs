@@ -33,16 +33,22 @@ use std::path::PathBuf;
 /// | macOS   | `$HOME`              | /Users/Alice   |
 /// | Windows | `{FOLDERID_Profile}` | C:\Users\Alice |
 ///
-/// On Linux and macOS, this function uses [`std::env::home_dir`] to
-/// determine the home directory:
-/// - Use `$HOME` if it is set.
-/// - If `$HOME` is not set, the function `getpwuid_r` is used to determine
+/// ### Linux and macOS:
+///
+/// - Use `$HOME` if it is set and not empty.
+/// - If `$HOME` is not set or empty, then the function `getpwuid_r` is used to determine
 ///   the home directory of the current user.
-/// 
-/// On Windows, this function retrieves the user profile folder using
-/// `SHGetKnownFolderPath`.
+/// - If `getpwuid_r` lacks an entry for the current user id or the home directory field is empty,
+///   then the function returns `None`.
+///
+/// ### Windows:
+///
+/// This function retrieves the user profile folder using `SHGetKnownFolderPath`.
 ///
 /// All the examples on this page mentioning `$HOME` use this behavior.
+/// 
+/// _Note:_ This function's behavior differs from [`std::env::home_dir`],
+/// which works incorrectly on Linux, macOS and Windows.
 ///
 /// [`std::env::home_dir`]: https://doc.rust-lang.org/std/env/fn.home_dir.html
 pub fn home_dir() -> Option<PathBuf> {

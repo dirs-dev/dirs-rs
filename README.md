@@ -48,19 +48,19 @@ Library run by user Alice:
 extern crate dirs;
 
 dirs::home_dir();
-// Lin: /home/alice
-// Win: C:\Users\Alice
-// Mac: /Users/Alice
+// Lin: Some(/home/alice)
+// Win: Some(C:\Users\Alice)
+// Mac: Some(/Users/Alice)
 
 dirs::audio_dir();
-// Lin: /home/alice/Music
-// Win: C:\Users\Alice\Music
-// Mac: /Users/Alice/Music
+// Lin: Some(/home/alice/Music)
+// Win: Some(C:\Users\Alice\Music)
+// Mac: Some(/Users/Alice/Music)
 
 dirs::config_dir();
-// Lin: /home/alice/.config
-// Win: C:\Users\Alice\AppData\Roaming
-// Mac: /Users/Alice/Library/Preferences
+// Lin: Some(/home/alice/.config)
+// Win: Some(C:\Users\Alice\AppData\Roaming)
+// Mac: Some(/Users/Alice/Library/Preferences)
 
 dirs::executable_dir();
 // Lin: Some(/home/alice/.local/bin)
@@ -84,7 +84,7 @@ dirs::executable_dir();
   - `executable_dir` is specified to provide the path to a user-writable directory for binaries.<br/>
     As such a directory only commonly exists on Linux, it returns `None` on macOS and Windows.
   - `font_dir` is specified to provide the path to a user-writable directory for fonts.<br/>
-    As such a directory only exists on Linux and macOS, it returns `None` Windows.
+    As such a directory only exists on Linux and macOS, it returns `None` on Windows.
   - `runtime_dir` is specified to provide the path to a directory for non-essential runtime data.
     It is required that this directory is created when the user logs in, is only accessible by the
     user itself, is deleted when the user logs out, and supports all filesystem features of the
@@ -96,27 +96,24 @@ dirs::executable_dir();
 **If you want to compute the location of cache, config or data directories for your own application or project,
 use `ProjectDirs` of the [directories](https://github.com/soc/directories-rs) project instead.**
 
-| Function name    | Value on Linux                                                                                   | Value on Windows             | Value on macOS                      |
-| ---------------- | ------------------------------------------------------------------------------------------------ | ---------------------------- | ----------------------------------- |
-| `home_dir`       | `$HOME`                                                                                          | `{FOLDERID_Profile}`         | `$HOME`                             |
-| `cache_dir`      | `$XDG_CACHE_HOME`               or `$HOME`/.cache                                                | `{FOLDERID_LocalAppData}`    | `$HOME`/Library/Caches              |
-| `config_dir`     | `$XDG_CONFIG_HOME`              or `$HOME`/.config                                               | `{FOLDERID_RoamingAppData}`  | `$HOME`/Library/Preferences         |
-| `data_dir`       | `$XDG_DATA_HOME`                or `$HOME`/.local/share                                          | `{FOLDERID_RoamingAppData}`  | `$HOME`/Library/Application Support |
-| `data_local_dir` | `$XDG_DATA_HOME`                or `$HOME`/.local/share                                          | `{FOLDERID_LocalAppData}`    | `$HOME`/Library/Application Support |
-| `executable_dir` | `Some($XDG_BIN_HOME`/../bin`)`  or `Some($XDG_DATA_HOME`/../bin`)` or `Some($HOME`/.local/bin`)` | `None`                       | `None`                              |
-| `runtime_dir`    | `Some($XDG_RUNTIME_DIR)`        or `None`                                                        | `None`                       | `None`                              |
-| `audio_dir`      | `Some(XDG_MUSIC_DIR)`           or `None`                                                        | `Some({FOLDERID_Music})`     | `Some($HOME`/Music/`)`              |
-| `desktop_dir`    | `Some(XDG_DESKTOP_DIR)`         or `None`                                                        | `Some({FOLDERID_Desktop})`   | `Some($HOME`/Desktop/`)`            |
-| `document_dir`   | `Some(XDG_DOCUMENTS_DIR)`       or `None`                                                        | `Some({FOLDERID_Documents})` | `Some($HOME`/Documents/`)`          |
-| `download_dir`   | `Some(XDG_DOWNLOAD_DIR)`        or `None`                                                        | `Some({FOLDERID_Downloads})` | `Some($HOME`/Downloads/`)`          |
-| `font_dir`       | `Some($XDG_DATA_HOME`/fonts/`)` or `Some($HOME`/.local/share/fonts/`)`                           | `None`                       | `Some($HOME`/Library/Fonts/`)`      |
-| `picture_dir`    | `Some(XDG_PICTURES_DIR)`        or `None`                                                        | `Some({FOLDERID_Pictures})`  | `Some($HOME`/Pictures/`)`           |
-| `public_dir`     | `Some(XDG_PUBLICSHARE_DIR)`     or `None`                                                        | `Some({FOLDERID_Public})`    | `Some($HOME`/Public/`)`             |
-| `template_dir`   | `Some(XDG_TEMPLATES_DIR)`       or `None`                                                        | `Some({FOLDERID_Templates})` | `None`                              | 
-| `video_dir`      | `Some(XDG_VIDEOS_DIR)`          or `None`                                                        | `Some({FOLDERID_Videos})`    | `Some($HOME`/Movies/`)`             |
-
-<!--| `trash_dir`  | `$XDG_DATA_HOME/Trash`          or `$HOME/.local/share/Trash`          | `???`                            | `$HOME/.trash`                 |-->
-
+| Function name    | Value on Linux                                                                                   | Value on Windows                  | Value on macOS                              |
+| ---------------- | ------------------------------------------------------------------------------------------------ | --------------------------------- | ------------------------------------------- |
+| `home_dir`       | `Some($HOME)`                                                                                    | `Some({FOLDERID_Profile})`        | `Some($HOME)`                               |
+| `cache_dir`      | `Some($XDG_CACHE_HOME)`         or `Some($HOME`/.cache`)`                                        | `Some({FOLDERID_LocalAppData})`   | `Some($HOME`/Library/Caches`)`              |
+| `config_dir`     | `Some($XDG_CONFIG_HOME)`        or `Some($HOME`/.config`)`                                       | `Some({FOLDERID_RoamingAppData})` | `Some($HOME`/Library/Preferences`)`         |
+| `data_dir`       | `Some($XDG_DATA_HOME)`          or `Some($HOME`/.local/share`)`                                  | `Some({FOLDERID_RoamingAppData})` | `Some($HOME`/Library/Application Support`)` |
+| `data_local_dir` | `Some($XDG_DATA_HOME)`          or `Some($HOME`/.local/share`)`                                  | `Some({FOLDERID_LocalAppData})`   | `Some($HOME`/Library/Application Support`)` |
+| `executable_dir` | `Some($XDG_BIN_HOME`/../bin`)`  or `Some($XDG_DATA_HOME`/../bin`)` or `Some($HOME`/.local/bin`)` | `None`                            | `None`                                      |
+| `runtime_dir`    | `Some($XDG_RUNTIME_DIR)`        or `None`                                                        | `None`                            | `None`                                      |
+| `audio_dir`      | `Some(XDG_MUSIC_DIR)`           or `None`                                                        | `Some({FOLDERID_Music})`          | `Some($HOME`/Music/`)`                      |
+| `desktop_dir`    | `Some(XDG_DESKTOP_DIR)`         or `None`                                                        | `Some({FOLDERID_Desktop})`        | `Some($HOME`/Desktop/`)`                    |
+| `document_dir`   | `Some(XDG_DOCUMENTS_DIR)`       or `None`                                                        | `Some({FOLDERID_Documents})`      | `Some($HOME`/Documents/`)`                  |
+| `download_dir`   | `Some(XDG_DOWNLOAD_DIR)`        or `None`                                                        | `Some({FOLDERID_Downloads})`      | `Some($HOME`/Downloads/`)`                  |
+| `font_dir`       | `Some($XDG_DATA_HOME`/fonts/`)` or `Some($HOME`/.local/share/fonts/`)`                           | `None`                            | `Some($HOME`/Library/Fonts/`)`              |
+| `picture_dir`    | `Some(XDG_PICTURES_DIR)`        or `None`                                                        | `Some({FOLDERID_Pictures})`       | `Some($HOME`/Pictures/`)`                   |
+| `public_dir`     | `Some(XDG_PUBLICSHARE_DIR)`     or `None`                                                        | `Some({FOLDERID_Public})`         | `Some($HOME`/Public/`)`                     |
+| `template_dir`   | `Some(XDG_TEMPLATES_DIR)`       or `None`                                                        | `Some({FOLDERID_Templates})`      | `None`                                      |
+| `video_dir`      | `Some(XDG_VIDEOS_DIR)`          or `None`                                                        | `Some({FOLDERID_Videos})`         | `Some($HOME`/Movies/`)`                     |
 
 ## Comparison
 
