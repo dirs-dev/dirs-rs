@@ -35,7 +35,7 @@ and on the JVM ([directories-jvm](https://github.com/soc/directories-jvm)).
 Add the library as a dependency to your project by inserting
 
 ```toml
-dirs = "1.0.0"
+dirs = "1.0"
 ```
 
 into the `[dependencies]` section of your Cargo.toml file.
