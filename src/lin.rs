@@ -14,10 +14,9 @@ pub fn data_dir()       -> Option<PathBuf> { env::var_os("XDG_DATA_HOME")  .and_
 pub fn data_local_dir() -> Option<PathBuf> { data_dir().clone() }
 pub fn runtime_dir()    -> Option<PathBuf> { env::var_os("XDG_RUNTIME_DIR").and_then(is_absolute_path) }
 pub fn executable_dir() -> Option<PathBuf> {
-    let exec_dir = env::var_os("XDG_BIN_HOME").and_then(is_absolute_path).or_else(|| {
+    env::var_os("XDG_BIN_HOME").and_then(is_absolute_path).or_else(|| {
         data_dir().map(|mut e| { e.pop(); e.push("bin"); e })
-    });
-    exec_dir
+    })
 }
 pub fn audio_dir()      -> Option<PathBuf> { run_xdg_user_dir_command("MUSIC") }
 pub fn desktop_dir()    -> Option<PathBuf> { run_xdg_user_dir_command("DESKTOP") }

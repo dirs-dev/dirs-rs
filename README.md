@@ -142,8 +142,3 @@ Please take this table with a grain of salt: a different crate might very well b
 - User: Supports [user directories](https://github.com/soc/directories-rs#userdirs)
 - Proj: Supports [project-specific base directories](https://github.com/soc/directories-rs#projectdirs)
 - Conv: Follows naming conventions of the operating system it runs on
-
-## Versioning
-
-After 1.0, the version number of this library consists of a whole number, which is incremented with each release.
-(Think semantic versioning without _minor_ and _patch_ versions.)
