@@ -1,5 +1,3 @@
-#![cfg(not(any(target_os = "windows", target_os = "macos")))]
-
 use std::env;
 use std::ffi::OsString;
 use std::path::PathBuf;
