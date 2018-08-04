@@ -142,3 +142,16 @@ Please take this table with a grain of salt: a different crate might very well b
 - User: Supports [user directories](https://github.com/soc/directories-rs#userdirs)
 - Proj: Supports [project-specific base directories](https://github.com/soc/directories-rs#projectdirs)
 - Conv: Follows naming conventions of the operating system it runs on
+
+## Build
+
+It's possible to cross-compile this library if the necessary toolchains are insatlled with rustup.
+This is helpful to ensure a change hasn't broken code on a different platform.
+
+The following commands will build this library on Linux, macOS and Windows:
+
+```
+cargo build --target=x86_64-unknown-linux-gnu
+cargo build --target=x86_64-apple-darwin
+cargo build --target=x86_64-pc-windows-gnu
+```
