@@ -145,7 +145,7 @@ Please take this table with a grain of salt: a different crate might very well b
 
 ## Build
 
-It's possible to cross-compile this library if the necessary toolchains are insatlled with rustup.
+It's possible to cross-compile this library if the necessary toolchains are installed with rustup.
 This is helpful to ensure a change hasn't broken code on a different platform.
 
 The following commands will build this library on Linux, macOS and Windows:
