@@ -12,7 +12,7 @@
 - a tiny low-level library with a minimal API
 - that provides the platform-specific, user-accessible locations
 - for retrieving and storing configuration, cache and other data
-- on Linux, Windows (≥ Vista) and macOS.
+- on Linux, Windows (≥ Vista), macOS and other platforms.
 
 The library provides the location of these directories by leveraging the mechanisms defined by
 - the [XDG base directory](https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html) and
@@ -24,6 +24,7 @@ The library provides the location of these directories by leveraging the mechani
 ## Platforms
 
 This library is written in Rust, and supports Linux, macOS and Windows.
+Other platforms are also supported; they use the Linux conventions.
 
 It's mid-level sister library, _directories_, is available for Rust ([directories-rs](https://github.com/soc/directories-rs))
 and on the JVM ([directories-jvm](https://github.com/soc/directories-jvm)).
