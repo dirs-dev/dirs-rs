@@ -27,7 +27,7 @@ use std::path::PathBuf;
 
 /// Returns the path to the user's home directory.
 ///
-/// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None.
+/// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None`.
 ///
 /// |Platform | Value                | Example        |
 /// | ------- | -------------------- | -------------- |
