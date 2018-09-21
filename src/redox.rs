@@ -1,41 +1,16 @@
+extern crate redox_users;
+
 use std::env;
 use std::ffi::OsString;
-use std::fs::File;
-use std::io::BufReader;
-use std::io::prelude::*;
-use std::os::unix::ffi::OsStringExt;
 use std::path::PathBuf;
-use std::str;
-
-extern crate syscall;
+use self::redox_users::AllUsers;
 
 pub fn home_dir() -> Option<PathBuf> {
-    let current_uid = syscall::getuid().ok()?;
+    let current_uid = redox_users::get_uid().ok()?;
+    let users = AllUsers::new(false).ok()?;
+    let user = users.get_by_id(current_uid)?;
 
-    let mut reader = File::open("/etc/passwd").ok().map(BufReader::new)?;
-
-    let mut entry = Vec::new();
-    while { entry.clear(); reader.read_until(b'\n', &mut entry).ok()? > 0 } {
-        if entry.split(|b| *b == b';').count() != 6 {
-            // Invalid entry!
-            continue;
-        }
-        let mut parts = entry.split(|b| *b == b';');
-
-        /* name */   parts.next().unwrap();
-        let uid: usize = match str::from_utf8(parts.next().unwrap()).ok().and_then(|s| s.parse().ok()) {
-            Some(uid) => uid,
-            None => continue
-        };
-        /* gid */    parts.next().unwrap();
-        /* gecos */  parts.next().unwrap();
-        let home =   parts.next().unwrap();
-
-        if uid == current_uid {
-            return Some(PathBuf::from(OsString::from_vec(home.to_vec())));
-        }
-    }
-    None
+    Some(PathBuf::from(user.home.clone()))
 }
 pub fn cache_dir()      -> Option<PathBuf> { env::var_os("XDG_CACHE_HOME") .and_then(is_absolute_path).or_else(|| home_dir().map(|h| h.join(".cache"))) }
 pub fn config_dir()     -> Option<PathBuf> { env::var_os("XDG_CONFIG_HOME").and_then(is_absolute_path).or_else(|| home_dir().map(|h| h.join(".config"))) }
