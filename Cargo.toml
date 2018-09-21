@@ -12,5 +12,8 @@ keywords    = ["xdg", "basedir", "app_dirs", "path", "folder"]
 [target.'cfg(unix)'.dependencies]
 libc = "0.2"
 
+[target.'cfg(target_os = "redox")'.dependencies]
+redox_syscall = "0.1.40"
+
 [target.'cfg(windows)'.dependencies]
 winapi = { version = "0.3", features = ["knownfolders", "objbase", "shlobj", "winbase", "winerror"] }
