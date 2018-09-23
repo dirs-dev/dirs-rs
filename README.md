@@ -12,18 +12,18 @@
 - a tiny low-level library with a minimal API
 - that provides the platform-specific, user-accessible locations
 - for retrieving and storing configuration, cache and other data
-- on Linux, Windows (≥ Vista), macOS and other platforms.
+- on Linux, Redox, Windows (≥ Vista), macOS and other platforms.
 
 The library provides the location of these directories by leveraging the mechanisms defined by
 - the [XDG base directory](https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html) and
-  the [XDG user directory](https://www.freedesktop.org/wiki/Software/xdg-user-dirs/) specifications on Linux
+  the [XDG user directory](https://www.freedesktop.org/wiki/Software/xdg-user-dirs/) specifications on Linux and Redox
 - the [Known Folder](https://msdn.microsoft.com/en-us/library/windows/desktop/dd378457.aspx) API on Windows
 - the [Standard Directories](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW6)
   guidelines on macOS
 
 ## Platforms
 
-This library is written in Rust, and supports Linux, macOS and Windows.
+This library is written in Rust, and supports Linux, Redox, macOS and Windows.
 Other platforms are also supported; they use the Linux conventions.
 
 It's mid-level sister library, _directories_, is available for Rust ([directories-rs](https://github.com/soc/directories-rs))
@@ -97,7 +97,7 @@ dirs::executable_dir();
 **If you want to compute the location of cache, config or data directories for your own application or project,
 use `ProjectDirs` of the [directories](https://github.com/soc/directories-rs) project instead.**
 
-| Function name    | Value on Linux                                                                                   | Value on Windows                  | Value on macOS                              |
+| Function name    | Value on Linux/Redox                                                                             | Value on Windows                  | Value on macOS                              |
 | ---------------- | ------------------------------------------------------------------------------------------------ | --------------------------------- | ------------------------------------------- |
 | `home_dir`       | `Some($HOME)`                                                                                    | `Some({FOLDERID_Profile})`        | `Some($HOME)`                               |
 | `cache_dir`      | `Some($XDG_CACHE_HOME)`         or `Some($HOME`/.cache`)`                                        | `Some({FOLDERID_LocalAppData})`   | `Some($HOME`/Library/Caches`)`              |
