@@ -10,22 +10,23 @@ use self::winapi::um::shtypes;
 use self::winapi::um::winbase;
 use self::winapi::um::winnt;
 
-pub fn home_dir()       -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_Profile) }
-pub fn data_dir()       -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_RoamingAppData) }
-pub fn data_local_dir() -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_LocalAppData) }
-pub fn cache_dir()      -> Option<PathBuf> { data_local_dir() }
-pub fn config_dir()     -> Option<PathBuf> { data_dir() }
-pub fn executable_dir() -> Option<PathBuf> { None }
-pub fn runtime_dir()    -> Option<PathBuf> { None }
-pub fn audio_dir()      -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_Music) }
-pub fn desktop_dir()    -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_Desktop) }
-pub fn document_dir()   -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_Documents) }
-pub fn download_dir()   -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_Downloads) }
-pub fn font_dir()       -> Option<PathBuf> { None }
-pub fn picture_dir()    -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_Pictures) }
-pub fn public_dir()     -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_Public) }
-pub fn template_dir()   -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_Templates) }
-pub fn video_dir()      -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_Videos) }
+pub fn home_dir()        -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_Profile) }
+pub fn data_dir()        -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_RoamingAppData) }
+pub fn data_local_dir()  -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_LocalAppData) }
+pub fn cache_dir()       -> Option<PathBuf> { data_local_dir() }
+pub fn config_dir()      -> Option<PathBuf> { data_dir() }
+pub fn executable_dir()  -> Option<PathBuf> { None }
+pub fn application_dir() -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_ProgramFiles) }
+pub fn runtime_dir()     -> Option<PathBuf> { None }
+pub fn audio_dir()       -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_Music) }
+pub fn desktop_dir()     -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_Desktop) }
+pub fn document_dir()    -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_Documents) }
+pub fn download_dir()    -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_Downloads) }
+pub fn font_dir()        -> Option<PathBuf> { None }
+pub fn picture_dir()     -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_Pictures) }
+pub fn public_dir()      -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_Public) }
+pub fn template_dir()    -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_Templates) }
+pub fn video_dir()       -> Option<PathBuf> { known_folder(&knownfolders::FOLDERID_Videos) }
 
 fn known_folder(folder_id: shtypes::REFKNOWNFOLDERID) -> Option<PathBuf> {
     unsafe {
