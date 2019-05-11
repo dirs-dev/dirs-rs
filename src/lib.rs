@@ -31,6 +31,9 @@ cfg_if! {
     } else if #[cfg(target_os = "redox")] {
         mod redox;
         use redox as sys;
+    } else if #[cfg(target_os = "wasi")] {
+        mod wasi;
+        use wasi as sys;
     } else {
         mod lin;
         use lin as sys;
