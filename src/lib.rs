@@ -254,7 +254,6 @@ pub fn video_dir() -> Option<PathBuf> {
     sys::video_dir()
 }
 
-
 #[cfg(test)]
 mod tests {
     #[test]
