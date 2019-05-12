@@ -155,8 +155,9 @@ The following commands will build this library on Linux, macOS and Windows:
 
 ```
 cargo build --target=x86_64-unknown-linux-gnu
-cargo build --target=x86_64-apple-darwin
 cargo build --target=x86_64-pc-windows-gnu
+cargo build --target=x86_64-apple-darwin
+cargo build --target=x86_64-unknown-redox
 ```
 
 ## License

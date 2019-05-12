@@ -3,7 +3,7 @@
 //! - a tiny library with a minimal API (16 functions)
 //! - that provides the platform-specific, user-accessible locations
 //! - for finding and storing configuration, cache and other data
-//! - on Linux, Windows (≥ Vista) and macOS.
+//! - on Linux, Redox, Windows (≥ Vista) and macOS.
 //!
 //! The library provides the location of these directories by leveraging the mechanisms defined by
 //!
@@ -18,9 +18,6 @@ extern crate cfg_if;
 
 use std::path::PathBuf;
 
-#[cfg(unix)]
-mod unix;
-
 cfg_if! {
     if #[cfg(target_os = "windows")] {
         mod win;
@@ -28,9 +25,6 @@ cfg_if! {
     } else if #[cfg(target_os = "macos")] {
         mod mac;
         use mac as sys;
-    } else if #[cfg(target_os = "redox")] {
-        mod redox;
-        use redox as sys;
     } else if #[cfg(target_os = "wasi")] {
         mod wasi;
         use wasi as sys;

@@ -1,6 +1,4 @@
-// TODO: flesh this out once actual WASI APIs for this are designed.
-//
-// For now here are just enough definitions to make things *compile*.
+// Stub definitions to make things *compile*.
 
 use std::path::PathBuf;
 
