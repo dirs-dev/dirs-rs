@@ -81,11 +81,11 @@ pub fn cache_dir() -> Option<PathBuf> {
 ///
 /// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None`.
 ///
-/// |Platform | Value                                 | Example                          |
-/// | ------- | ------------------------------------- | -------------------------------- |
-/// | Linux   | `$XDG_CONFIG_HOME` or `$HOME`/.config | /home/alice/.config              |
-/// | macOS   | `$HOME`/Library/Preferences           | /Users/Alice/Library/Preferences |
-/// | Windows | `{FOLDERID_RoamingAppData}`           | C:\Users\Alice\AppData\Roaming   |
+/// |Platform | Value                                 | Example                                  |
+/// | ------- | ------------------------------------- | ---------------------------------------- |
+/// | Linux   | `$XDG_CONFIG_HOME` or `$HOME`/.config | /home/alice/.config                      |
+/// | macOS   | `$HOME`/Library/Application Support   | /Users/Alice/Library/Application Support |
+/// | Windows | `{FOLDERID_RoamingAppData}`           | C:\Users\Alice\AppData\Roaming           |
 pub fn config_dir() -> Option<PathBuf> {
     sys::config_dir()
 }
@@ -124,6 +124,18 @@ pub fn data_local_dir() -> Option<PathBuf> {
 /// | Windows | –                                                                | –                      |
 pub fn executable_dir() -> Option<PathBuf> {
     sys::executable_dir()
+}
+/// Returns the path to the user's preference directory.
+///
+/// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None`.
+///
+/// |Platform | Value                                 | Example                          |
+/// | ------- | ------------------------------------- | -------------------------------- |
+/// | Linux   | `$XDG_CONFIG_HOME` or `$HOME`/.config | /home/alice/.config              |
+/// | macOS   | `$HOME`/Library/Preferences           | /Users/Alice/Library/Preferences |
+/// | Windows | `{FOLDERID_RoamingAppData}`           | C:\Users\Alice\AppData\Roaming   |
+pub fn preference_dir() -> Option<PathBuf> {
+    sys::preference_dir()
 }
 /// Returns the path to the user's runtime directory.
 ///
@@ -258,6 +270,7 @@ mod tests {
         println!("data_dir:       {:?}", ::data_dir());
         println!("data_local_dir: {:?}", ::data_local_dir());
         println!("executable_dir: {:?}", ::executable_dir());
+        println!("preference_dir: {:?}", ::preference_dir());
         println!("runtime_dir:    {:?}", ::runtime_dir());
         println!("audio_dir:      {:?}", ::audio_dir());
         println!("home_dir:       {:?}", ::desktop_dir());

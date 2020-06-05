@@ -8,6 +8,7 @@ pub fn data_local_dir() -> Option<PathBuf> { dirs_sys::known_folder_local_app_da
 pub fn cache_dir()      -> Option<PathBuf> { data_local_dir() }
 pub fn config_dir()     -> Option<PathBuf> { data_dir() }
 pub fn executable_dir() -> Option<PathBuf> { None }
+pub fn preference_dir() -> Option<PathBuf> { data_dir() }
 pub fn runtime_dir()    -> Option<PathBuf> { None }
 pub fn audio_dir()      -> Option<PathBuf> { dirs_sys::known_folder_music() }
 pub fn desktop_dir()    -> Option<PathBuf> { dirs_sys::known_folder_desktop() }
