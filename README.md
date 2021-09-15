@@ -39,7 +39,7 @@ and on the JVM ([directories-jvm](https://github.com/dirs-dev/directories-jvm)).
 Add the library as a dependency to your project by inserting
 
 ```toml
-dirs = "3.0"
+dirs = "4.0"
 ```
 
 into the `[dependencies]` section of your Cargo.toml file.
@@ -194,7 +194,7 @@ cargo build --target=x86_64-unknown-redox
 
 ### 2
 
-The behavior of deactivated, missing or invalid [_XDG User Dirs_](https://www.freedesktop.org/wiki/Software/xdg-user-dirs/)
+**BREAKING CHANGE** The behavior of deactivated, missing or invalid [_XDG User Dirs_](https://www.freedesktop.org/wiki/Software/xdg-user-dirs/)
 entries on Linux has been improved (contributed by @tmiasko, thank you!):
 
 - Version 1 returned the user's home directory (`Some($HOME)`) for such faulty entries, except for a faulty `XDG_DESKTOP_DIR` entry which returned (`Some($HOME/Desktop)`).
