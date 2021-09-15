@@ -148,6 +148,9 @@ pub fn preference_dir() -> Option<PathBuf> {
 }
 /// Returns the path to the user's runtime directory.
 ///
+/// The runtime directory contains transient, non-essential data (like sockets or named pipes) that
+/// is expected to be cleared when the user's session ends.
+///
 /// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None`.
 ///
 /// |Platform | Value              | Example         |
