@@ -114,6 +114,7 @@ use `ProjectDirs` of the [directories](https://github.com/dirs-dev/directories-r
 | `executable_dir` | `Some($XDG_BIN_HOME`/../bin`)`  or `Some($XDG_DATA_HOME`/../bin`)` or `Some($HOME`/.local/bin`)` | `None`                            | `None`                                      |
 | `preference_dir` | `Some($XDG_CONFIG_HOME)`        or `Some($HOME`/.config`)`                                       | `Some({FOLDERID_RoamingAppData})` | `Some($HOME`/Library/Preferences`)`         |
 | `runtime_dir`    | `Some($XDG_RUNTIME_DIR)`        or `None`                                                        | `None`                            | `None`                                      |
+| `state_dir`      | `Some($XDG_STATE_HOME)`         or `Some($HOME`/.local/state`)`                                  | `None`                            | `None`                                      |
 | `audio_dir`      | `Some(XDG_MUSIC_DIR)`           or `None`                                                        | `Some({FOLDERID_Music})`          | `Some($HOME`/Music/`)`                      |
 | `desktop_dir`    | `Some(XDG_DESKTOP_DIR)`         or `None`                                                        | `Some({FOLDERID_Desktop})`        | `Some($HOME`/Desktop/`)`                    |
 | `document_dir`   | `Some(XDG_DOCUMENTS_DIR)`       or `None`                                                        | `Some({FOLDERID_Documents})`      | `Some($HOME`/Documents/`)`                  |
@@ -167,6 +168,9 @@ cargo build --target=x86_64-unknown-redox
 ```
 
 ## Changelog
+
+### 4
+- Add support for `XDG_STATE_HOME`.
 
 ### 3
 

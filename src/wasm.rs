@@ -3,6 +3,7 @@
 use std::path::PathBuf;
 
 pub fn home_dir()       -> Option<PathBuf> { None }
+
 pub fn cache_dir()      -> Option<PathBuf> { None }
 pub fn config_dir()     -> Option<PathBuf> { None }
 pub fn data_dir()       -> Option<PathBuf> { None }
@@ -10,6 +11,8 @@ pub fn data_local_dir() -> Option<PathBuf> { None }
 pub fn preference_dir() -> Option<PathBuf> { None }
 pub fn runtime_dir()    -> Option<PathBuf> { None }
 pub fn executable_dir() -> Option<PathBuf> { None }
+pub fn state_dir()      -> Option<PathBuf> { None }
+
 pub fn audio_dir()      -> Option<PathBuf> { None }
 pub fn desktop_dir()    -> Option<PathBuf> { None }
 pub fn document_dir()   -> Option<PathBuf> { None }
