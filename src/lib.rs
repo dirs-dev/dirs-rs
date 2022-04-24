@@ -43,6 +43,9 @@ mod lin;
 )))]
 use lin as sys;
 
+#[cfg(not(any(target_os = "windows", target_os = "ios", target_arch = "wasm32")))]
+pub mod xdg_basedir;
+
 /// Returns the path to the user's home directory.
 ///
 /// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None`.
