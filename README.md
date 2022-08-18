@@ -1,9 +1,9 @@
+# `dirs`
+
 [![crates.io](https://img.shields.io/crates/v/dirs.svg?style=for-the-badge)](https://crates.io/crates/dirs)
 [![API documentation](https://img.shields.io/docsrs/dirs/latest?style=for-the-badge)](https://docs.rs/dirs/)
 ![actively developed](https://img.shields.io/badge/maintenance-actively--developed-brightgreen.svg?style=for-the-badge)
 ![License: MIT/Apache-2.0](https://img.shields.io/badge/license-MIT%2FApache--2.0-orange.svg?style=for-the-badge)
-
-# `dirs`
 
 ## Introduction
 
@@ -13,6 +13,7 @@
 - on Linux, Redox, Windows (≥ Vista), macOS and other platforms.
 
 The library provides the location of these directories by leveraging the mechanisms defined by
+
 - the [XDG base directory](https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html) and
   the [XDG user directory](https://www.freedesktop.org/wiki/Software/xdg-user-dirs/) specifications on Linux and Redox
 - the [Known Folder](https://msdn.microsoft.com/en-us/library/windows/desktop/dd378457.aspx) API on Windows
@@ -32,7 +33,7 @@ and on the JVM ([directories-jvm](https://github.com/dirs-dev/directories-jvm)).
 
 ## Usage
 
-#### Dependency
+### Dependency
 
 Add the library as a dependency to your project by inserting
 
@@ -44,7 +45,7 @@ into the `[dependencies]` section of your Cargo.toml file.
 
 If you are upgrading from version 2, please read the [section on breaking changes](#3) first.
 
-#### Example
+### Example
 
 Library run by user Alice:
 
@@ -158,7 +159,7 @@ This is helpful to ensure a change hasn't broken code on a different platform.
 
 The following commands will build this library on Linux, macOS and Windows:
 
-```
+```sh
 cargo build --target=x86_64-unknown-linux-gnu
 cargo build --target=x86_64-pc-windows-gnu
 cargo build --target=x86_64-apple-darwin
@@ -202,10 +203,10 @@ entries on Linux has been improved (contributed by @tmiasko, thank you!):
 
 Licensed under either of
 
- * Apache License, Version 2.0
-   ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
- * MIT license
-   ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
+- Apache License, Version 2.0
+   ([LICENSE-APACHE](LICENSE-APACHE) or <http://www.apache.org/licenses/LICENSE-2.0>)
+- MIT license
+   ([LICENSE-MIT](LICENSE-MIT) or <http://opensource.org/licenses/MIT>)
 
 at your option.
 
