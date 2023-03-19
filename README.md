@@ -37,7 +37,7 @@ and on the JVM ([directories-jvm](https://github.com/dirs-dev/directories-jvm)).
 Add the library as a dependency to your project by inserting
 
 ```toml
-dirs = "4.0"
+dirs = "5.0"
 ```
 
 into the `[dependencies]` section of your Cargo.toml file.
@@ -167,6 +167,11 @@ cargo build --target=x86_64-unknown-redox
 ```
 
 ## Changelog
+
+### 5
+
+- Update `dirs-sys` dependency to `0.4.0`.
+- Add `config_local_dir` for non-roaming configuration on Windows. On non-Windows platforms the behavior is identical to `config dir`.
 
 ### 4
 
