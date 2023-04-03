@@ -8,29 +8,20 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
+  CARGO_REGISTRIES_CRATES_IO_PROTOCOL: sparse
+  RUST_BACKTRACE: full
 
 jobs:
-  build-and-test-on-linux:
-    runs-on: ubuntu-latest
+  build-and-test:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
     steps:
       - uses: actions/checkout@v3
       - name: Build
         run: cargo build --verbose
       - name: Test
-        run: RUST_BACKTRACE=full cargo test --verbose -- --nocapture
-  build-and-test-on-windows:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Build
-        run: cargo build --verbose
-      - name: Test
-        run: $env:RUST_BACKTRACE="full"; cargo test --verbose -- --nocapture
-  build-and-test-on-macos:
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Build
-        run: cargo build --verbose
-      - name: Test
-        run: RUST_BACKTRACE=full cargo test --verbose -- --nocapture
+        run: cargo test --verbose -- --nocapture
