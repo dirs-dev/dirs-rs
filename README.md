@@ -132,17 +132,18 @@ Here is an overview of them, combined with ratings on properties that guided the
 Please take this table with a grain of salt: a different crate might very well be more suitable for your specific use case.
 (Of course _my_ crate achieves _my_ design goals better than other crates, which might have had different design goals.)
 
-| Library                                                   | Status         | Lin | Mac | Win |Base|User|Proj|Conv|
-| --------------------------------------------------------- | -------------- |:---:|:---:|:---:|:--:|:--:|:--:|:--:|
-| [app_dirs](https://crates.io/crates/app_dirs)             | Unmaintained   |  ✔  |  ✔  |  ✔  | 🞈  | ✖  | ✔  | ✖  |
-| [app_dirs2](https://crates.io/crates/app_dirs2)           | Maintained     |  ✔  |  ✔  |  ✔  | 🞈  | ✖  | ✔  | ✖  |
-| **dirs**                                                  | **Developed**  |  ✔  |  ✔  |  ✔  | ✔  | ✔  | ✖  | ✔  |
-| [directories](https://crates.io/crates/directories)       | Developed      |  ✔  |  ✔  |  ✔  | ✔  | ✔  | ✔  | ✔  |
-| [s_app_dir](https://crates.io/crates/s_app_dir)           | Unmaintained?  |  ✔  |  ✖  |  🞈  | ✖  | ✖  | 🞈  | ✖  |
-| [standard_paths](https://crates.io/crates/standard_paths) | Maintained     |  ✔  |  ✖  |  ✔  | ✔  | ✔  | ✔  | ✖  |
-| [xdg](https://crates.io/crates/xdg)                       | Maintained     |  ✔  |  ✖  |  ✖  | ✔  | ✖  | ✔  | 🞈  |
-| [xdg-basedir](https://crates.io/crates/xdg-basedir)       | Unmaintained?  |  ✔  |  ✖  |  ✖  | ✔   | ✖  | ✖  | 🞈  |
-| [xdg-rs](https://crates.io/crates/xdg-rs)                 | Obsolete       |  ✔  |  ✖  |  ✖  | ✔   | ✖  | ✖  | 🞈  |
+| Library                                                   | Status         | Lin | Mac | Win |Base|User|Proj|Conv|Flex|
+| --------------------------------------------------------- | -------------- |:---:|:---:|:---:|:--:|:--:|:--:|:--:|:--:|
+| [app_dirs](https://crates.io/crates/app_dirs)             | Unmaintained   |  ✔  |  ✔  |  ✔  | 🞈  | ✖  | ✔  | ✖  | ✖  |
+| [app_dirs2](https://crates.io/crates/app_dirs2)           | Maintained     |  ✔  |  ✔  |  ✔  | 🞈  | ✖  | ✔  | ✖  | ✖  |
+| **dirs**                                                  | **Developed**  |  ✔  |  ✔  |  ✔  | ✔  | ✔  | ✖  | ✔  | ✖  |
+| [directories](https://crates.io/crates/directories)       | Developed      |  ✔  |  ✔  |  ✔  | ✔  | ✔  | ✔  | ✔  | ✖  |
+| [etcetera](https://crates.io/crates/etcetera)             | Developed      |  ✔  |  ✔  |  ✔  | ✔  | ✖  | ✔  | ✔  | ✔  |
+| [s_app_dir](https://crates.io/crates/s_app_dir)           | Unmaintained?  |  ✔  |  ✖  |  🞈  | ✖  | ✖  | 🞈  | ✖  | ✖  |
+| [standard_paths](https://crates.io/crates/standard_paths) | Maintained     |  ✔  |  ✖  |  ✔  | ✔  | ✔  | ✔  | ✖  | ✖  |
+| [xdg](https://crates.io/crates/xdg)                       | Maintained     |  ✔  |  ✖  |  ✖  | ✔  | ✖  | ✔  | 🞈  | ✖  |
+| [xdg-basedir](https://crates.io/crates/xdg-basedir)       | Unmaintained?  |  ✔  |  ✖  |  ✖  | ✔  | ✖  | ✖  | 🞈  | ✖  |
+| [xdg-rs](https://crates.io/crates/xdg-rs)                 | Obsolete       |  ✔  |  ✖  |  ✖  | ✔  | ✖  | ✖  | 🞈  | ✖  |
 
 - Lin: Linux support
 - Mac: macOS support
@@ -151,6 +152,7 @@ Please take this table with a grain of salt: a different crate might very well b
 - User: Supports [user directories](https://github.com/dirs-dev/directories-rs#userdirs)
 - Proj: Supports [project-specific base directories](https://github.com/dirs-dev/directories-rs#projectdirs)
 - Conv: Follows naming conventions of the operating system it runs on
+- Flex: Allows flexibility in the choice of directory conventions
 
 ## Build
 
