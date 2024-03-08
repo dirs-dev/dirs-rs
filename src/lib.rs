@@ -15,33 +15,19 @@
 
 use std::path::PathBuf;
 
-#[cfg(target_os = "windows")]
-mod win;
-#[cfg(target_os = "windows")]
-use win as sys;
-
-#[cfg(any(target_os = "macos", target_os = "ios"))]
-mod mac;
-#[cfg(any(target_os = "macos", target_os = "ios"))]
-use mac as sys;
-
-#[cfg(target_arch = "wasm32")]
-mod wasm;
-#[cfg(target_arch = "wasm32")]
-use wasm as sys;
-
-#[cfg(not(any(
-    target_os = "windows",
-    target_os = "macos", target_os = "ios",
-    target_arch = "wasm32"
-)))]
-mod lin;
-#[cfg(not(any(
-    target_os = "windows",
-    target_os = "macos", target_os = "ios",
-    target_arch = "wasm32"
-)))]
-use lin as sys;
+#[cfg_attr(target_os = "windows", path = "win.rs")]
+#[cfg_attr(any(target_os = "macos", target_os = "ios"), path = "mac.rs")]
+#[cfg_attr(target_arch = "wasm32", path = "wasm.rs")]
+#[cfg_attr(
+    not(any(
+        target_os = "windows",
+        target_os = "macos",
+        target_os = "ios",
+        target_arch = "wasm32"
+    )),
+    path = "lin.rs"
+)]
+mod sys;
 
 /// Returns the path to the user's home directory.
 ///
