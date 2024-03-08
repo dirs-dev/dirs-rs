@@ -2,21 +2,26 @@ name: Rust
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ main ]
+    branches: [ "main" ]
 
 env:
   CARGO_TERM_COLOR: always
+  CARGO_REGISTRIES_CRATES_IO_PROTOCOL: sparse
+  RUST_BACKTRACE: full
 
 jobs:
-  build:
+  build-and-test:
+    runs-on: ${{ matrix.os }}
 
-    runs-on: [ ubuntu-latest, windows-latest, macos-latest ]
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build
-      run: cargo build --verbose
-    - name: Test
-      run: RUST_BACKTRACE=full cargo test --verbose -- --nocapture
+      - uses: actions/checkout@v3
+      - name: Build
+        run: cargo build --verbose
+      - name: Test
+        run: cargo test --verbose -- --nocapture

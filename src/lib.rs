@@ -84,6 +84,18 @@ pub fn cache_dir() -> Option<PathBuf> {
 pub fn config_dir() -> Option<PathBuf> {
     sys::config_dir()
 }
+/// Returns the path to the user's local config directory.
+///
+/// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None`.
+///
+/// |Platform | Value                                 | Example                                  |
+/// | ------- | ------------------------------------- | ---------------------------------------- |
+/// | Linux   | `$XDG_CONFIG_HOME` or `$HOME`/.config | /home/alice/.config                      |
+/// | macOS   | `$HOME`/Library/Application Support   | /Users/Alice/Library/Application Support |
+/// | Windows | `{FOLDERID_LocalAppData}`             | C:\Users\Alice\AppData\Local             |
+pub fn config_local_dir() -> Option<PathBuf> {
+    sys::config_local_dir()
+}
 /// Returns the path to the user's data directory.
 ///
 /// The returned value depends on the operating system and is either a `Some`, containing a value from the following table, or a `None`.
