@@ -10,4 +10,4 @@ maintenance = { status = "actively-developed" }
 keywords    = ["xdg", "basedir", "app_dirs", "path", "folder"]
 
 [dependencies]
-dirs-sys = "0.4.1"
+dirs-sys = "0.5.0"
